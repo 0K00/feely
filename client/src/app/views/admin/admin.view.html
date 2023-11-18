@@ -1,0 +1,14 @@
+<!--
+* @Author                : 0K00<qdouvillez@gmail.com>
+* @CreatedDate           : 2023-11-18 22:35:47
+* @LastEditors           : 0K00<qdouvillez@gmail.com>
+* @LastEditDate          : 2023-11-18 22:35:47
+* @FilePath              : feely/client/src/app/views/admin/admin.view.html
+* @CopyRight             : MerBleueAviation
+-->
+
+{{users.length}}
+
+<div class="admin" *ngFor="let user of users">
+  {{user.name}} {{user.score}}
+</div>

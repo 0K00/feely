@@ -1,13 +1,29 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "home",
   "projects": {
     "client": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true,
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false,
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false,
+          "skipTests": true
         }
       },
       "root": "",

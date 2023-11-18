@@ -20,3 +20,9 @@ model User {
   score         Int
   createdAt     DateTime      @default(now())
 }
+
+model Admin {
+  id Int @id @default(autoincrement())
+  name  String @unique
+  password String
+}

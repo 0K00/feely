@@ -1,0 +1,65 @@
+<!--
+* @Author                : 0K00<qdouvillez@gmail.com>
+* @CreatedDate           : 2023-11-18 20:26:00
+* @LastEditors           : 0K00<qdouvillez@gmail.com>
+* @LastEditDate          : 2023-11-18 22:29:22
+* @FilePath              : feely/client/src/app/views/home/home.view.html
+* @CopyRight             : MerBleueAviation
+-->
+
+<div class="home">
+  <div class="question" *ngFor="let question of questions; let i = index;">
+    <div class="content" *ngIf="question.isShow && i === 0">
+      <h2>Salut!</h2>
+      <div>
+        Lorem ipsum
+      </div>
+
+      <input type="text" name="" id="" placeholder="Votre nom..." [(ngModel)]="name" />
+      <input type="text" name="" id="" placeholder="Votre email..." [(ngModel)]="email" />
+      <input type="number" name="" id="" placeholder="Votre age..." [(ngModel)]="age" />
+      <input type="text" name="" id="" placeholder="Votre genre..." [(ngModel)]="gender" />
+
+    </div>
+
+    <div class="content" *ngIf="question.isShow && i != 0">
+      {{question.title}}
+
+      <div *ngIf="stepper != 0" class="radios">
+        <div>
+          <input type="radio" id="never" name="value" value="1" (change)="inputChange($event)" />
+          <label for="never">Jamais</label>
+        </div>
+
+        <div>
+          <input type="radio" id="almost" name="value" value="2" (change)="inputChange($event)" />
+          <label for="almost">Presque jamais</label>
+        </div>
+
+        <div>
+          <input type="radio" id="sometimpes" name="value" value="3" (change)="inputChange($event)" />
+          <label for="sometimpes">Parfois</label>
+        </div>
+
+        <div>
+          <input type="radio" id="quite" name="value" value="4" (change)="inputChange($event)" />
+          <label for="quite">Assez souvent</label>
+        </div>
+
+        <div>
+          <input type="radio" id="often" name="value" value="5" (change)="inputChange($event)" />
+          <label for="often">Très souvent</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="profile" *ngFor="let profile of profiles">
+    <div class="content" *ngIf="profile.isShow">
+      {{profile.title}} {{profile.description}}
+    </div>
+  </div>
+  <button *ngIf="stepper === 0" (click)="next()">Start</button>
+  <button *ngIf="stepper != 0 && !isSubmit" (click)="before()">Before</button>
+  <button *ngIf="stepper != 10 && stepper != 0" [disabled]="this.questions[stepper].value === 0" (click)="next()">Next</button>
+  <button *ngIf="stepper === 10 && !isSubmit" [disabled]="this.questions[stepper].value === 0" (click)="submit()">Submit</button>
+</div>

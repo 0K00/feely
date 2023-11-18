@@ -31,4 +31,4 @@ Deployment method and commands.
 ## Built With
 
 * [Prisma](https://www.prisma.io/) - Server framework
-* [Angular](https://www.angular.com/) - Front framework
+* [Angular](https://www.angular.io/) - Front framework

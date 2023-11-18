@@ -2,7 +2,7 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                        *
  * @CreatedDate           : 2023-11-18 18:20:44                               *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                        *
- * @LastEditDate          : 2023-11-18 18:20:44                               *
+ * @LastEditDate          : 2023-11-18 22:32:58                               *
  * @FilePath              : feely/server/src/controllers/users/users.controller.ts*
  * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
@@ -15,9 +15,9 @@ import {
     Body,
     HttpException,
     HttpStatus,
-    Put,
-    Delete
+    UseGuards
   } from '@nestjs/common';
+import { IsConnectedGuard } from 'src/guards/is-connect.guard';
   import { PrismaService } from 'src/prisma.service';
 
 
@@ -43,8 +43,9 @@ export class UsersController {
       throw err;
     }
   }
-
+  
   @Get("users")
+  @UseGuards(IsConnectedGuard)
   async getAll(): Promise<any> {
     try {
       return await this.prisma.user.findMany({});
@@ -54,6 +55,7 @@ export class UsersController {
   }
 
   @Get("users/:id")
+  @UseGuards(IsConnectedGuard)
   async getById(@Param("id") id: string): Promise<any> {
     try {
       const user = await this.prisma.user.findUnique({
