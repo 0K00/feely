@@ -2,23 +2,41 @@
 * @Author                : 0K00<qdouvillez@gmail.com>
 * @CreatedDate           : 2023-11-18 22:35:00
 * @LastEditors           : 0K00<qdouvillez@gmail.com>
-* @LastEditDate          : 2023-11-19 03:09:31
+* @LastEditDate          : 2023-11-19 06:03:19
 * @FilePath              : feely/client/src/app/views/admin/admin.view.html
 * @CopyRight             : MerBleueAviation
 -->
 
-Nombre : {{users.length}}
+<div class="content">
 
-Moyenne : {{average}} - {{averageProfile}}
+  <h2>Dashboard</h2>
 
-T'es cool : {{average1}}%
+<div>
+  <b>Nombre</b> : {{users.length}}
+</div>
 
-Tu gères : {{average2}}%
+<div>
+  <b>Moyenne</b> : {{average}} - {{averageProfile}}
+</div>
 
-C'est le coup de chaud : {{average3}}%
+<div>
+  <b>T'es cool</b> : {{average1}}%
+</div>
 
-Y'a le feu au lac : {{average4}}%
+<div>
+  <b>Tu gères</b> : {{average2}}%
+</div>
+
+<div>
+  <b>C'est le coup de chaud</b> : {{average3}}%
+</div>
+
+<div>
+  <b>Y'a le feu au lac</b> : {{average4}}%
+</div>
 
 <div *ngIf="app > 50">
-  Pourcentage de personne intérressé par l'application : {{app}}%
+  <b>Pourcentage de personne intérressé par l'application</b> : {{app}}%
+</div>
+
 </div>

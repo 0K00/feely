@@ -2,7 +2,7 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                       *
  * @CreatedDate           : 2023-11-18 18:37:25                              *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                       *
- * @LastEditDate          : 2023-11-19 03:04:56                              *
+ * @LastEditDate          : 2023-11-19 09:45:41                              *
  * @FilePath              : feely/server/src/services/db.service.ts          *
  * @CopyRight             : MerBleueAviation                                 *
  ****************************************************************************/
