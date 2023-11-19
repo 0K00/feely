@@ -2,7 +2,7 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                        *
  * @CreatedDate           : 2023-11-18 18:20:44                               *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                        *
- * @LastEditDate          : 2023-11-18 22:32:58                               *
+ * @LastEditDate          : 2023-11-19 03:04:46                               *
  * @FilePath              : feely/server/src/controllers/users/users.controller.ts*
  * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
@@ -13,6 +13,7 @@ import {
     Get,
     Param,
     Body,
+    Put,
     HttpException,
     HttpStatus,
     UseGuards
@@ -63,6 +64,46 @@ export class UsersController {
       });
 
       if (user) return user;
+      else throw new HttpException("Not found", HttpStatus.NOT_FOUND);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  @Put("app")
+  async vote(@Body() body): Promise<any> {
+    try {
+      let nb = await this.prisma.getApp.findUnique({where: {id: 1}});
+      let yes = nb.yes;
+      let no = nb.no;
+      if(body.vote) {
+        yes += 1;
+      } else {
+        no += 1;
+      }
+      let vote = await this.prisma.getApp.update({
+        where: {id: 1},
+        data: {
+          yes: yes,
+          no: no
+        }
+      });
+
+      return vote;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  @Get("app/:id")
+  @UseGuards(IsConnectedGuard)
+  async getAppById(@Param("id") id: string): Promise<any> {
+    try {
+      const app = await this.prisma.getApp.findUnique({
+        where: {id: parseInt(id)}
+      });
+
+      if (app) return app;
       else throw new HttpException("Not found", HttpStatus.NOT_FOUND);
     } catch (err) {
       throw err;

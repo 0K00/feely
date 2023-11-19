@@ -26,3 +26,9 @@ model Admin {
   name  String @unique
   password String
 }
+
+model getApp {
+  id Int @id @default(autoincrement())
+  yes Int
+  no Int
+}

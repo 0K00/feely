@@ -1,14 +1,24 @@
 <!--
 * @Author                : 0K00<qdouvillez@gmail.com>
-* @CreatedDate           : 2023-11-18 22:35:47
+* @CreatedDate           : 2023-11-18 22:35:00
 * @LastEditors           : 0K00<qdouvillez@gmail.com>
-* @LastEditDate          : 2023-11-18 22:35:47
+* @LastEditDate          : 2023-11-19 03:09:31
 * @FilePath              : feely/client/src/app/views/admin/admin.view.html
 * @CopyRight             : MerBleueAviation
 -->
 
-{{users.length}}
+Nombre : {{users.length}}
 
-<div class="admin" *ngFor="let user of users">
-  {{user.name}} {{user.score}}
+Moyenne : {{average}} - {{averageProfile}}
+
+T'es cool : {{average1}}%
+
+Tu gères : {{average2}}%
+
+C'est le coup de chaud : {{average3}}%
+
+Y'a le feu au lac : {{average4}}%
+
+<div *ngIf="app > 50">
+  Pourcentage de personne intérressé par l'application : {{app}}%
 </div>

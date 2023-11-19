@@ -2,7 +2,7 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                        *
  * @CreatedDate           : 2023-11-18 18:38:51                               *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                        *
- * @LastEditDate          : 2023-11-18 22:19:11                               *
+ * @LastEditDate          : 2023-11-19 02:42:07                               *
  * @FilePath              : feely/server/src/app.module.ts                    *
  * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
@@ -25,5 +25,6 @@ export class AppModule implements OnModuleInit {
 
   async onModuleInit(): Promise<void> {
     await this.dbService.initializeData();
+    await this.dbService.initializeDataVote();
   }
 }

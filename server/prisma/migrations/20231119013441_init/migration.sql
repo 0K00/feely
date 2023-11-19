@@ -1,0 +1,6 @@
+-- CreateTable
+CREATE TABLE "getApp" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "yes" INTEGER NOT NULL,
+    "no" INTEGER NOT NULL
+);

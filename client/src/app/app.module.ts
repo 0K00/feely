@@ -2,7 +2,7 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                        *
  * @CreatedDate           : 2023-11-18 20:44:39                               *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                        *
- * @LastEditDate          : 2023-11-18 20:44:39                               *
+ * @LastEditDate          : 2023-11-19 01:24:41                               *
  * @FilePath              : feely/client/src/app/app.module.ts                *
  * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
@@ -21,7 +21,7 @@ import { ViewsModule } from './views/views.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ViewsModule
+    ViewsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

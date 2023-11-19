@@ -2,7 +2,7 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                        *
  * @CreatedDate           : 2023-11-18 19:01:37                               *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                        *
- * @LastEditDate          : 2023-11-18 19:01:37                               *
+ * @LastEditDate          : 2023-11-19 01:53:53                               *
  * @FilePath              : feely/client/src/app/views/views.module.ts        *
  * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
@@ -13,8 +13,7 @@ import { HomeView } from './home/home.view';
 import { AdminView } from './admin/admin.view';
 import { LoginView } from './login/login.view';
 import { FormsModule } from '@angular/forms';
-
-
+import { ZingchartAngularModule } from 'zingchart-angular';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ZingchartAngularModule
   ],
   exports: [
     HomeView,

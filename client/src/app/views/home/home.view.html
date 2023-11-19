@@ -2,7 +2,7 @@
 * @Author                : 0K00<qdouvillez@gmail.com>
 * @CreatedDate           : 2023-11-18 20:26:00
 * @LastEditors           : 0K00<qdouvillez@gmail.com>
-* @LastEditDate          : 2023-11-18 22:29:22
+* @LastEditDate          : 2023-11-19 03:45:34
 * @FilePath              : feely/client/src/app/views/home/home.view.html
 * @CopyRight             : MerBleueAviation
 -->
@@ -11,19 +11,20 @@
   <div class="question" *ngFor="let question of questions; let i = index;">
     <div class="content" *ngIf="question.isShow && i === 0">
       <h2>Salut!</h2>
-      <div>
-        Lorem ipsum
+      <div class="desc">
+        Réponds à 10 questions pour déduire ton profil de stress.
       </div>
 
-      <input type="text" name="" id="" placeholder="Votre nom..." [(ngModel)]="name" />
-      <input type="text" name="" id="" placeholder="Votre email..." [(ngModel)]="email" />
-      <input type="number" name="" id="" placeholder="Votre age..." [(ngModel)]="age" />
-      <input type="text" name="" id="" placeholder="Votre genre..." [(ngModel)]="gender" />
-
+      <input type="text" name="" id="" placeholder="Ton nom..." [(ngModel)]="name" />
+      <input type="text" name="" id="" placeholder="Ton email..." [(ngModel)]="email" />
+      <input type="number" name="" id="" placeholder="Ton age..." [(ngModel)]="age" />
+      <input type="text" name="" id="" placeholder="Ton genre..." [(ngModel)]="gender" />
     </div>
 
     <div class="content" *ngIf="question.isShow && i != 0">
-      {{question.title}}
+      <h2>
+        {{question.title}}
+      </h2>
 
       <div *ngIf="stepper != 0" class="radios">
         <div>
@@ -55,11 +56,29 @@
   </div>
   <div class="profile" *ngFor="let profile of profiles">
     <div class="content" *ngIf="profile.isShow">
-      {{profile.title}} {{profile.description}}
+      <img [src]="'assets/' + profile.img + '.png'" [alt]="profile.title">
+      <h2>{{profile.title}}</h2>
+      <div>
+        {{profile.description}}
+      </div>
+    </div>
+    <div *ngIf="profile.isShow && !isVote" >
+      <h3>Tu voudrais une application de suivis ?</h3>
+      <div class="content">
+        <button (click)="voteYes()">Oui</button>
+        <button (click)="voteNo()">Non</button>
+      </div>
     </div>
   </div>
-  <button *ngIf="stepper === 0" (click)="next()">Start</button>
-  <button *ngIf="stepper != 0 && !isSubmit" (click)="before()">Before</button>
-  <button *ngIf="stepper != 10 && stepper != 0" [disabled]="this.questions[stepper].value === 0" (click)="next()">Next</button>
-  <button *ngIf="stepper === 10 && !isSubmit" [disabled]="this.questions[stepper].value === 0" (click)="submit()">Submit</button>
+
+  <div class="content">
+    <button *ngIf="stepper === 0" (click)="next()">Commencer</button>
+    <button *ngIf="stepper != 0 && !isSubmit" (click)="before()">Précédent</button>
+    <button *ngIf="stepper != 10 && stepper != 0" [disabled]="this.questions[stepper].value === 0" (click)="next()">Suivant</button>
+    <button *ngIf="stepper === 10 && !isSubmit" [disabled]="this.questions[stepper].value === 0" (click)="submit()">Valider</button>
+  </div>
+
+  <div class="sub" *ngIf="stepper === 0">
+    Le questionnaire dit " Perceived Stress Scale " (PSS) de Cohen Kamarck et Mermelstein est l'une des échelles les plus utilisées pour évaluer sa perception du stress. Les items sont élaborés pour mettre en évidence dans quelle mesure les individus trouvent leur vie imprévisible, incontrôlable. Échelle internationale validée sur le plan scientifique en France, le PSS 10 est un test simple qui permet d'évaluer de façon objective votre niveau de stress au cours du mois passé.
+  </div>
 </div>

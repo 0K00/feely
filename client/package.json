@@ -20,6 +20,8 @@
     "@angular/router": "^17.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "zingchart": "^2.9.12",
+    "zingchart-angular": "^2.0.2",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {

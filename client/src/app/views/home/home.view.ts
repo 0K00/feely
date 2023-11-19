@@ -2,12 +2,13 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                        *
  * @CreatedDate           : 2023-11-18 19:17:50                               *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                        *
- * @LastEditDate          : 2023-11-18 22:32:09                               *
+ * @LastEditDate          : 2023-11-19 04:05:02                               *
  * @FilePath              : feely/client/src/app/views/home/home.view.ts      *
  * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
 
 import { Component } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 interface IQuestion {
   title: string,
@@ -21,7 +22,6 @@ interface IProfile {
   title: string,
   description: string,
   img: string,
-  link: string,
   isShow: boolean
 }
 
@@ -92,37 +92,33 @@ export class HomeView {
     {
       valueMin: 0,
       valueMax: 9,
-      title: "Zen",
-      description: "Abscence de stress",
-      img: "d",
-      link: "",
+      title: "T'es cool",
+      description: "Absence de stress. Les évènements glissent sur toi. T'es zen...",
+      img: "1",
       isShow: false
     },
     {
       valueMin: 10,
       valueMax: 20,
-      title: "Neutre",
-      description: "Votre niveau de stress ressenti est plutôt faible, vous vous adaptez.",
-      img: "d",
-      link: "",
+      title: "Tu gères",
+      description: "Ton niveau de stress ressenti est plutôt faible, tu t'adaptes bien aux situations qui se présentent !",
+      img: "2",
       isShow: false
     },
     {
       valueMin: 21,
       valueMax: 26,
-      title: "Plus",
-      description: "Vous savez en général faire face au stress mais vous pouvez parfois être animé d'un sentiment d'impuissance entraînant des perturbations émotionnelles. ",
-      img: "d",
-      link: "",
+      title: "C'est le coup de chaud",
+      description: "Tu sais en général faire face au stress, mais tu peux parfois être animé d'un sentiment d'impuissance face aux petits coups de chaud !",
+      img: "3",
       isShow: false
     },
     {
       valueMin: 27,
       valueMax: 50,
-      title: "Majeur",
-      description: "Vous entrez en zone rouge. L'impression de subir la plupart des situations est forte et la vie est perçue comme une menace. Il devient urgent de prendre soin de vous.",
-      img: "d",
-      link: "",
+      title: "Y'a le feu au lac",
+      description: "Tu as l'impression de subir chaque situation stressante. Tu te sens dépassé par moment et tu ne sais plus comment réagir. Attention, il devient urgent de prendre soin de toi",
+      img: "4",
       isShow: false
     },
   ]
@@ -134,6 +130,7 @@ export class HomeView {
   public score: number = 0;
   public stepper: number = 0;
   public isSubmit: boolean = false;
+  public isVote: boolean = false;
 
   public next(): void {
     this.questions[this.stepper].isShow = false;
@@ -165,16 +162,13 @@ export class HomeView {
       "score": this.score
     });
 
-    console.log(raw);
-
-
     let requestOptions = {
       method: 'POST',
       headers: headers,
       body: raw,
     };
 
-    fetch("http://localhost:3000/api/users", requestOptions)
+    fetch(environment.apiUrl + "/api/users", requestOptions)
       .catch(error => console.log('error', error));
   }
 
@@ -212,4 +206,32 @@ export class HomeView {
       this.sendProfile();
     });
   }
+
+  public voteYes(): void {
+    this.isVote = true;
+  }
+
+  public voteNo(): void {
+    this.isVote = true;
+  }
+
+  public editVote(vote: boolean) {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    let raw = JSON.stringify({
+      "vote": vote
+    });
+
+    let requestOptions = {
+      method: 'PUT',
+      headers: headers,
+      body: raw,
+    };
+
+    fetch("localhost:5000/api/projects/BMJEkKoQ", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    }
 }

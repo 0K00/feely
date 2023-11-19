@@ -2,7 +2,7 @@
  * @Author                : 0K00<qdouvillez@gmail.com>                       *
  * @CreatedDate           : 2023-11-18 18:37:25                              *
  * @LastEditors           : 0K00<qdouvillez@gmail.com>                       *
- * @LastEditDate          : 2023-11-18 22:38:07                              *
+ * @LastEditDate          : 2023-11-19 03:04:56                              *
  * @FilePath              : feely/server/src/services/db.service.ts          *
  * @CopyRight             : MerBleueAviation                                 *
  ****************************************************************************/
@@ -21,6 +21,16 @@ export class DatabaseService {
       await this.prismaService.admin.create({ data: {
           name: process.env.NAME,
           password: sha256(process.env.PW)
+      } });
+    }
+  }
+
+  async initializeDataVote(): Promise<void> {
+    let isExist = await this.prismaService.getApp.findUnique({where: {id: 1}});
+    if(!isExist) {
+      await this.prismaService.getApp.create({ data: {
+          yes: 0,
+          no: 0
       } });
     }
   }
